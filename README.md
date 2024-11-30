@@ -1,6 +1,9 @@
 # Unity-RL
 A prototype demonstrating reinforcement learning for agent-based artificial intelligence with Unity ML-Agents. 
 
+## Versioning
+I use Unity 2021.3 (the earliest supported version) with ML-Agents 2.X and Python 3.9.2. 
+
 ## Contributors
 ### Nicholas Wile
 Kennesaw State University Department of Computer Science.
