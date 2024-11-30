@@ -2,22 +2,22 @@
     "GetCoinAgent": {
         "checkpoints": [
             {
-                "steps": 85372,
-                "file_path": "results\\get-coin\\GetCoinAgent\\GetCoinAgent-85372.onnx",
-                "reward": 1.0,
-                "creation_time": 1732969121.9568672,
+                "steps": 81314,
+                "file_path": "results\\get-coin\\GetCoinAgent\\GetCoinAgent-81314.onnx",
+                "reward": 0.9851301115241635,
+                "creation_time": 1732969613.3921628,
                 "auxillary_file_paths": [
-                    "results\\get-coin\\GetCoinAgent\\GetCoinAgent-85372.pt"
+                    "results\\get-coin\\GetCoinAgent\\GetCoinAgent-81314.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 85372,
+            "steps": 81314,
             "file_path": "results\\get-coin\\GetCoinAgent.onnx",
-            "reward": 1.0,
-            "creation_time": 1732969121.9568672,
+            "reward": 0.9851301115241635,
+            "creation_time": 1732969613.3921628,
             "auxillary_file_paths": [
-                "results\\get-coin\\GetCoinAgent\\GetCoinAgent-85372.pt"
+                "results\\get-coin\\GetCoinAgent\\GetCoinAgent-81314.pt"
             ]
         }
     },

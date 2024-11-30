@@ -1,3 +1,5 @@
+// Nicholas Wile
+
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
@@ -63,6 +65,14 @@ public class GetCoinAgent : Agent
         // Actions may be passed by the player using heuristics or inferenced by the agent based on observations
         float move_x = actions.ContinuousActions[0];
         float move_z = actions.ContinuousActions[1];
+
+        // Face agent in direction it advances
+        Vector3 move_direction = new Vector3(move_x, 0, move_z).normalized;
+        if (move_direction != Vector3.zero)
+        {
+            Quaternion rotation_direction = Quaternion.LookRotation(move_direction);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, rotation_direction, _move_speed * Time.deltaTime);
+        }
 
         // Move agent to a new position
         transform.localPosition += _move_speed * Time.deltaTime * new Vector3(move_x, 0, move_z);
