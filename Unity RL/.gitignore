@@ -1,6 +1,9 @@
 # My virtual environment for ML-Agents * Python * CUDA * PyTorch
 /rl-venv/
 
+# My 3D models and textures for the game
+/Assets/3D/
+
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
