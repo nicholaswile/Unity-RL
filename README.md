@@ -76,10 +76,12 @@ If you get these warnings and do have an NVIDIA GPU and want to use CUDA, you ca
 ### Nicholas Wile
 Kennesaw State University Department of Computer Science.
 
-## Citations
+## Additional resources
 
 ### Unity ML-Agents Package
-Unity Technologies. (2023). *Unity Machine Learning Agents*. Retrieved from https://github.com/Unity-Technologies/ml-agents
+Unity Technologies. (2023). *Unity Machine Learning Agents*.  https://github.com/Unity-Technologies/ml-agents
+
+Unity Manual ML-Agents Documentation. https://docs.unity3d.com/2021.3/Documentation/Manual/com.unity.ml-agents.html
 
 ### Research Paper
 Juliani, A., Berges, V., Vckay, E., Gao, Y., Henry, H., Mattar, M., & Lange, D. (2018). *Unity: A General Platform for Intelligent Agents*. arXiv preprint arXiv:1809.02627.
