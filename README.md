@@ -87,7 +87,7 @@ Unity Manual ML-Agents Documentation. https://docs.unity3d.com/2021.3/Documentat
 Juliani, A., Berges, V., Vckay, E., Gao, Y., Henry, H., Mattar, M., & Lange, D. (2018). *Unity: A General Platform for Intelligent Agents*. arXiv preprint arXiv:1809.02627.
 
 ## Assets
-All assets are original and created by me except for the <a href="https://www.models-resource.com/wii/supersmashbrosbrawl/model/6986/">F-Zero racers and textures</a>, which are all from The VG Resource. My project is 100% free.
+All assets are original and created by me except for the <a href="https://www.models-resource.com/wii/supersmashbrosbrawl/model/6926/">F-Zero racers and textures</a>, which are all from The VG Resource. My project is 100% free.
 
 ### The VG Resource
 The VG Resource. (2024). https://www.vg-resource.com/ 
