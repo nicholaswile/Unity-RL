@@ -1,4 +1,4 @@
-# Unity-ML-Agents
+# Unity-RL
 A prototype demonstrating reinforcement learning for agent-based artificial intelligence with Unity ML-Agents. 
 
 ## Contributors
