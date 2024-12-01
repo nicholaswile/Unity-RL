@@ -55,7 +55,7 @@ $ mlagents-learn --help
 
 A list of command line arguments should display. If you get errors, then here is how I fixed it:
 
-I had to downgrade protobuf,
+I had to downgrade ProtoBuf,
 ```bash
 $ pip install protobuf==3.20
 ```
@@ -71,6 +71,33 @@ Doing this fixed the dependency and version errors for ML-Agents.
 You probably won't need to do this, I didn't, because I already have CUDA and even if I didn't I don't think a separate download is required anymore for ML-Agents 0.30.0. But just in case, if running the mlagents-learn --help command generated warnings about missing CUDA libraries, you may ignore this if you only want to use the CPU for processing. 
 
 If you get these warnings and do have an NVIDIA GPU and want to use CUDA, you can download the CUDA Toolkit from the <a href="https://developer.nvidia.com/cuda-11.0-download-archive">NVIDIA download page</a>. If you still get warnings about cuDNN, you may install it from the <a href="https://developer.nvidia.com/cudnn">cuDNN page</a> and copy the include, lib, and bin folders into the CUDA v11.0 folder. 
+
+## Training
+The following is the command to train a new agent. If you want to create a different agent, you may change the name of the config file and ID to appropriately match the agent you want to make.
+```bash
+$ mlagents-learn config/GetCoinAgent.yaml --run-id=get-coin
+```
+
+|If setup correctly, the Unity logo displays in the terminal.|
+|:---:|
+|<img src="screenshots/unity-terminal.png">|
+
+After executing that command, press play in the Unity Editor. For a more detailed tutorial on Unity ML-Agents, you may refer to <a href="https://youtu.be/zPFU30tbyKs?si=3NZKsF10uKQ8k1f2">this excellent video</a> by Code Monkey or <a href="https://github.com/Unity-Technologies/ml-agents">the documentation</a>. 
+
+## Visualization
+To evaluate the model, you may view the metrics using TensorBoard DURING training from another terminal. You must be in the virtual environment. If you get warnings about TensorFlow installations, you can ignore these. Installing or updating TensorFlow may uninstall the needed versions of certain libraries like NumPy, ProtoBuf, etc for ML-Agents to work, and you will have to reinstall those compatible versions. 
+
+As long as you see the localhost link, it should work. Open the localhost link in a web browser to see useful visualizations of the machine learning model.
+```bash
+$ tensorboard --logdir results
+Serving TensorBoard on localhost; to expose to the network, use a proxy or pass --bind_all
+TensorBoard 2.13.0 at http://localhost:6006/ (Press 
+CTRL+C to quit)
+```
+|Rewards/Losses|Policy|
+|:---:|:---:|
+|<img src="screenshots/viz1.png">|<img src="screenshots/viz2.png">|
+
 
 ## Contributors
 ### Nicholas Wile
