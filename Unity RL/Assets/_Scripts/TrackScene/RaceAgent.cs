@@ -25,12 +25,15 @@ public class RaceAgent : Agent
     private Vector3 _start_position;
     private Quaternion _start_rotation;
 
+    private DriverController _driver;
+
 
     private void Awake()
     {
         _ui = FindObjectOfType<UI>();
         _start_position = transform.localPosition;
         _start_rotation = transform.localRotation;
+        _driver = GetComponent<DriverController>();
     }
 
 
@@ -41,9 +44,9 @@ public class RaceAgent : Agent
         // Randomize the initial state for dynamic learning
         // transform.localPosition = new Vector3(Random.Range(-3.0f, -1.0f), 1.5f, Random.Range(-3.0f, 3.0f));
         // _coin_agent.localPosition = new Vector3(Random.Range(1.0f, 3.0f), 1.5f, Random.Range(-3.0f, 3.0f));
+        _driver.Set_Velocity(0.0f);
         transform.localPosition = _start_position;
         transform.localRotation = _start_rotation;
-
     }
 
     
@@ -72,11 +75,11 @@ public class RaceAgent : Agent
         if (move_direction != Vector3.zero)
         {
             Quaternion rotation_direction = Quaternion.LookRotation(move_direction);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, rotation_direction, _move_speed * Time.deltaTime);
+            // transform.localRotation = Quaternion.Slerp(transform.localRotation, rotation_direction, _move_speed * Time.deltaTime);
         }
 
         // Move agent to a new position
-        transform.localPosition += _move_speed * Time.deltaTime * new Vector3(move_x, 0, move_z);
+        // transform.localPosition += _move_speed * Time.deltaTime * new Vector3(move_x, 0, move_z);
 
     }
 
@@ -88,6 +91,7 @@ public class RaceAgent : Agent
 
         // Sets the x and z actions according to player input and passes them to the OnActionReceived() function
         // Horizontal and vertical axes include the WASD keys, up/down/left/right arrows, analog sticks on USB controllers, etc.
+
         continuous_actions[0] = Input.GetAxisRaw("Horizontal");
         continuous_actions[1] = Input.GetAxisRaw("Vertical");
     }
@@ -107,9 +111,9 @@ public class RaceAgent : Agent
         }
 
         // If agent collides with coin, reward
-        if (other.TryGetComponent(out Coin _))
+        if (other.TryGetComponent(out Checkpoint _))
         {
-            Win(+1.0f, "Got Coin");
+            Win(+1.0f, "Hit Checkpoint");
             _ui.total_wins++;
         }
 
