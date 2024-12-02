@@ -23,7 +23,7 @@ public class CheckpointSystem : MonoBehaviour
     {
 
         // Gets all checkpoints in scene and adds them to list
-        Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
+        Checkpoint[] checkpoints = GetComponentsInChildren<Checkpoint>();
 
         // Gets all driver agents in scene
         DriverController[] drivers = FindObjectsOfType<DriverController>();
