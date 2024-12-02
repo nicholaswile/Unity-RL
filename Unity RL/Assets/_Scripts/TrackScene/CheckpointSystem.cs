@@ -14,9 +14,9 @@ public class CheckpointSystem : MonoBehaviour
     // A list of int for each agent training on the track - they may be at different checkpoints
     private List<int> _next_checkpoint;
 
-    // Events that the agent subscribes to
-    public event EventHandler Hit_Correct_Checkpoint;
-    public event EventHandler Hit_Wrong_Checkpoint;
+    // Events that the agent subscribes to, using custom event args
+    public event EventHandler<HitCheckpointEventArgs> Hit_Correct_Checkpoint;
+    public event EventHandler<HitCheckpointEventArgs> Hit_Wrong_Checkpoint;
 
 
     private void Awake()
@@ -65,14 +65,41 @@ public class CheckpointSystem : MonoBehaviour
 
             _next_checkpoint[_drivers.IndexOf(driver)] = (next_index + 1) % _checkpoints.Count;
 
-            Hit_Correct_Checkpoint?.Invoke(this, EventArgs.Empty);
+            HitCheckpointEventArgs args = new HitCheckpointEventArgs(driver.transform);
+
+            Hit_Correct_Checkpoint?.Invoke(this, args);
         }
 
         else
         {
             Debug.Log($"[ERROR] Hit wrong checkpoint #{hit_index} (expected #{next_index})");
 
-            Hit_Wrong_Checkpoint?.Invoke(this, EventArgs.Empty);
+            HitCheckpointEventArgs args = new HitCheckpointEventArgs(driver.transform);
+
+            Hit_Wrong_Checkpoint?.Invoke(this, args);
         }
+    }
+
+    // Reset the next checkpoint of the specified driver
+    public void Reset_Checkpoints(DriverController driver)
+    {
+        _next_checkpoint[_drivers.IndexOf(driver)] = 0;
+    }
+
+    // Returns the next checkpoint of the specified driver
+    public Checkpoint Get_Next_Checkpoint(DriverController driver)
+    {
+        return _checkpoints[_next_checkpoint[_drivers.IndexOf(driver)]];
+    }
+
+}
+
+// Custom event args to pass to the ML-Agent
+public class HitCheckpointEventArgs : EventArgs
+{
+    public Transform driver_transform { get; set; }
+    public HitCheckpointEventArgs(Transform driver_transform)
+    {
+        this.driver_transform = driver_transform;
     }
 }

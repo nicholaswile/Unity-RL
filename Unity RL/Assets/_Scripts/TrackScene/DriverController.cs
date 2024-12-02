@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+// Nicholas Wile
+
 using UnityEngine;
 
 public class DriverController : MonoBehaviour
@@ -24,10 +24,17 @@ public class DriverController : MonoBehaviour
     // UI displays agent velocity
     private UI _ui;
 
+    // Agent actions
+    private bool _accelerate = false;
+    private bool _brake = false;
+    private float _turn_input = 0.0f;
+
+
     public void Set_Velocity(float velocity)
     {
         _current_velocity = velocity;
     }
+
 
     private void Awake()
     {
@@ -35,15 +42,19 @@ public class DriverController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         // Get input from the player
-        bool accelerate = Input.GetButton("Fire1"); 
-        bool brake = Input.GetButton("Fire2"); 
-        float turn_input = Input.GetAxis("Horizontal");
+        // Commenting out: giving up control here to give control to the agent
+        // In inference mode, the agent makes up inputs for these values
+        // In heuristic mode, I control the actions the same way, just from the RaceAgent script instead of this one.
+        /*_accelerate = Input.GetButton("Fire1"); 
+        _brake = Input.GetButton("Fire2"); 
+        _turn_input = Input.GetAxis("Horizontal");*/
 
         // Apply acceleration or braking
-        if (accelerate)
+        if (_accelerate)
         {
             // Kinematic equation: final velocity = initial velocity + acceleration * time
             _current_velocity += _acceleration * Time.deltaTime;
@@ -52,7 +63,7 @@ public class DriverController : MonoBehaviour
             _current_velocity = Mathf.Min(_current_velocity, _max_velocity);
         }
 
-        else if (brake)
+        else if (_brake)
         {
             _current_velocity -= _braking * Time.deltaTime;
 
@@ -81,10 +92,21 @@ public class DriverController : MonoBehaviour
         _rb.velocity = new Vector3(movement.x, _rb.velocity.y, movement.z);
 
         // Turn vehicle
-        float turn_amount = turn_input * _turn_speed * Time.deltaTime;
+        float turn_amount = _turn_input * _turn_speed * Time.deltaTime;
         Quaternion turn = Quaternion.Euler(0, turn_amount, 0);
         _rb.MoveRotation(_rb.rotation * turn);
 
         _ui.velocity = _current_velocity;
+
     }
+
+
+    // Accessed from the agent 
+    public void Set_Inputs(bool accelerate, bool brake, float turn_input)
+    {
+        _accelerate = accelerate;
+        _brake = brake;
+        _turn_input = turn_input;
+    }
+
 }

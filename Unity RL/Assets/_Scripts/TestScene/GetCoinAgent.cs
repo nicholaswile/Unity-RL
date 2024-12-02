@@ -8,7 +8,6 @@ using Unity.MLAgents.Sensors;
 public class GetCoinAgent : Agent
 {
 
-
     // Reference to target (goal)
     [SerializeField]
     private Transform _coin_agent;
