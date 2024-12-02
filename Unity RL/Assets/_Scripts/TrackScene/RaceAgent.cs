@@ -91,30 +91,33 @@ public class RaceAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
 
-        // Teach agent to accelerate
-        // Accelerate is a boolean button press, thus digital (discrete)
+        // Teach agent to accelerate and brake
+        // Accelerate and brake are boolean button presss, thus digital (discrete)
         bool accelerate = false;
+        bool brake = false;
         switch(actions.DiscreteActions[0]) 
         {
-            case 0:     accelerate = false;      break; // Don't accelerate
+            case 0:                             break; // Don't accelerate or brake
             case 1:     accelerate = true;      break; // Accelerate
-        }
-
-        // Teach agent to brake
-        // Braking is a boolean button press, thus digital (discrete)
-        bool brake = false;
-        switch(actions.DiscreteActions[1])
-        {
-            case 0:     brake = false;           break; // Don't brake
-            case 1:     brake = true;           break; // Brake
+            case 2:     brake = true;           break; // Brake
         }
 
         // Teach agent to steer
-        // Turning could be digital or analog, I choose analog to represent axis
-        float turn = actions.ContinuousActions[0];
+        // Input.GetAxis returns a value in range [-1, 1],
+        // with -1 being a complete left and +1 being a complete right (for Axis="Horizontal")
+        // We can discretize that into 3 options: -1, 0, +1 for steering left, none, and right
+
+        int turn_amount = 0;
+
+        switch(actions.DiscreteActions[1])
+        {
+            case 0:     turn_amount = 0;        break; // Don't turn
+            case 1:     turn_amount = -1;       break; // Left turn
+            case 2:     turn_amount = 1;        break; // Right turn
+        }
 
         // Let agent control driver
-        _driver.Set_Inputs(accelerate, brake, turn);
+        _driver.Set_Inputs(accelerate, brake, turn_amount);
 
     }
 
@@ -133,12 +136,30 @@ public class RaceAgent : Agent
         bool brake = Input.GetButton("Fire2"); 
 
         // Horizontal and vertical axes are mapped to the WASD keys, analog sticks on USB controllers, etc.
-        float turn_input = Input.GetAxis("Horizontal");
+        float turn_amount = Input.GetAxis("Horizontal");
 
-        discrete_actions[0] = (accelerate ? 1 : 0);
-        discrete_actions[1] = (brake ? 1 : 0);
-        continuous_actions[0] = turn_input;
+        int velocity_input = 0;
+        if (accelerate)
+        {
+            velocity_input = 1;
+        }
+        if (brake)
+        {
+            velocity_input = 2;
+        }
+        discrete_actions[0] = velocity_input;
 
+        int turn_input = 0;
+        if (turn_amount < 0)
+        {
+            turn_input = 1;
+        }
+        else if (turn_amount > 0)
+        {
+            turn_input = 2;
+        }
+
+        discrete_actions[1] = turn_input;
     }
 
 
