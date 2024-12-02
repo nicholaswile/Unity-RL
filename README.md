@@ -98,6 +98,8 @@ CTRL+C to quit)
 |:---:|:---:|
 |<img src="screenshots/viz1.png">|<img src="screenshots/viz2.png">|
 
+## Imitation learning
+Generative Adversarial Imitation Learning (GAIL) can be used to speedup RL training. How it works is, I record a gameplay session so the agent can view how it is supposed to play (rather than randomly guessing via trial and error). GAIL creates a second learning algorithm (discriminator) to determine whether an action comes from the agent or my demo. The agent must learn to behave more like the demo to deceive the discriminator. Behavioral Cloning (BC) may also be added to force the agent to act like the demo. Adding these to a project involves editing the config file to support additional learning types and parameters.
 
 ## Contributors
 ### Nicholas Wile

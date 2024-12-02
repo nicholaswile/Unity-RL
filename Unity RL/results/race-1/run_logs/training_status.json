@@ -2,22 +2,22 @@
     "RaceAgent": {
         "checkpoints": [
             {
-                "steps": 115807,
-                "file_path": "results\\race-1\\RaceAgent\\RaceAgent-115807.onnx",
-                "reward": 0.0,
-                "creation_time": 1733125948.8990352,
+                "steps": 30202,
+                "file_path": "results\\race-1\\RaceAgent\\RaceAgent-30202.onnx",
+                "reward": null,
+                "creation_time": 1733129593.765962,
                 "auxillary_file_paths": [
-                    "results\\race-1\\RaceAgent\\RaceAgent-115807.pt"
+                    "results\\race-1\\RaceAgent\\RaceAgent-30202.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 115807,
+            "steps": 30202,
             "file_path": "results\\race-1\\RaceAgent.onnx",
-            "reward": 0.0,
-            "creation_time": 1733125948.8990352,
+            "reward": null,
+            "creation_time": 1733129593.765962,
             "auxillary_file_paths": [
-                "results\\race-1\\RaceAgent\\RaceAgent-115807.pt"
+                "results\\race-1\\RaceAgent\\RaceAgent-30202.pt"
             ]
         }
     },
