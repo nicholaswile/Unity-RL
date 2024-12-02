@@ -114,10 +114,15 @@ Unity Manual ML-Agents Documentation. https://docs.unity3d.com/2021.3/Documentat
 Juliani, A., Berges, V., Vckay, E., Gao, Y., Henry, H., Mattar, M., & Lange, D. (2018). *Unity: A General Platform for Intelligent Agents*. arXiv preprint arXiv:1809.02627.
 
 ## Assets
-All assets are original and created by me except for the <a href="https://www.models-resource.com/wii/supersmashbrosbrawl/model/6926/">F-Zero machines</a>, which are all from The VG Resource. My project is 100% free.
+All assets are original and created by me except for the F-Zero machines, which are all from The VG Resource. My project is 100% free.
 
 ### The VG Resource
 The VG Resource. (2024). https://www.vg-resource.com/ 
 
 #### F-Zero Machines
 Peardian. https://www.models-resource.com/submitter/Peardian/
+* (I used the <a href="https://www.models-resource.com/wii/supersmashbrosbrawl/model/6926/">old models</a>. One of the <a href="https://www.models-resource.com/wii/supersmashbrosbrawl/model/6986/">newer ones</a> is in my project files, but I did not use yet).
+
+#### F-Zero GX Tracks 
+Electropolitan. https://www.models-resource.com/submitter/Electropolitan/
+* (I did not use yet, but <a href=" https://www.models-resource.com/gamecube/fzerogx/model/25632/">Mute City</a> is in my project files).
