@@ -3157,7 +3157,7 @@ MonoBehaviour:
   - {fileID: 1234926445}
   - {fileID: 64266630}
   - {fileID: 299995680}
-  _smoothing: 0.5
+  _smoothing: 0.7
 --- !u!1 &1498189426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4964,6 +4964,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1252021003}
     m_Modifications:
+    - target: {fileID: 3988390776097534563, guid: ad4a55042cf365a4aa9fffcac40c84a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3988390776430388386, guid: ad4a55042cf365a4aa9fffcac40c84a9, type: 3}
       propertyPath: m_Name
       value: NPC
