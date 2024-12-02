@@ -99,8 +99,8 @@ public class RaceAgent : Agent
         bool accelerate = false;
         switch(actions.DiscreteActions[0]) 
         {
-            case 0:     accelerate = true;      break; // Accelerate
-            case 1:     accelerate = false;      break; // Don't accelerate
+            case 0:     accelerate = false;      break; // Don't accelerate
+            case 1:     accelerate = true;      break; // Accelerate
         }
 
         // Teach agent to brake
@@ -108,8 +108,8 @@ public class RaceAgent : Agent
         bool brake = false;
         switch(actions.DiscreteActions[1])
         {
-            case 0:     brake = true;           break; // Brake
-            case 1:     brake = false;           break; // Don't brake
+            case 0:     brake = false;           break; // Don't brake
+            case 1:     brake = true;           break; // Brake
         }
 
         // Teach agent to steer

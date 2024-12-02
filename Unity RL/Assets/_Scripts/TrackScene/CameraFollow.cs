@@ -30,6 +30,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         _camera_location = _locations[_location_index];
+
     }
 
     private void FixedUpdate()
@@ -39,6 +40,8 @@ public class CameraFollow : MonoBehaviour
         transform.position = new Vector3(change.x, transform.position.y, change.z);
 
         transform.LookAt(_target);
+
+
 
     }
 }
