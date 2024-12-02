@@ -1,0 +1,29 @@
+{
+    "RaceAgent": {
+        "checkpoints": [
+            {
+                "steps": 31873,
+                "file_path": "results\\race-im\\RaceAgent\\RaceAgent-31873.onnx",
+                "reward": -9.0,
+                "creation_time": 1733132817.3680744,
+                "auxillary_file_paths": [
+                    "results\\race-im\\RaceAgent\\RaceAgent-31873.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 31873,
+            "file_path": "results\\race-im\\RaceAgent.onnx",
+            "reward": -9.0,
+            "creation_time": 1733132817.3680744,
+            "auxillary_file_paths": [
+                "results\\race-im\\RaceAgent\\RaceAgent-31873.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

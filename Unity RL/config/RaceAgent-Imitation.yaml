@@ -2,8 +2,8 @@ behaviors:
   RaceAgent:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 10
-      buffer_size: 100
+      batch_size: 256
+      buffer_size: 10240
       learning_rate: 3.0e-4
       beta: 5.0e-4
       epsilon: 0.2
@@ -19,12 +19,12 @@ behaviors:
     reward_signals:
       extrinsic:
         gamma: 0.99
-        strength: 1.0
+        strength: 0.1
       gail:
-        strength: 0.5
+        strength: 1.0
         demo_path: Demos/RaceAgentDemo.demo
     behavioral_cloning:
-      strength: 0.5
+      strength: 1.0
       demo_path: Demos/RaceAgentDemo.demo
     max_steps: 500000
     time_horizon: 64
