@@ -22,7 +22,7 @@ public class DriverController : MonoBehaviour
     private Rigidbody _rb;
 
     // UI displays agent velocity
-    private UI _ui;
+    private UI_Race _ui;
 
     // Agent actions
     private bool _accelerate = false;
@@ -38,7 +38,7 @@ public class DriverController : MonoBehaviour
 
     private void Awake()
     {
-        _ui = FindObjectOfType<UI>();
+        _ui = FindObjectOfType<UI_Race>();
         _rb = GetComponent<Rigidbody>();
     }
 

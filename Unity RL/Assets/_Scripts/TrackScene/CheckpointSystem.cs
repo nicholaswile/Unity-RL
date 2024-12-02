@@ -51,6 +51,7 @@ public class CheckpointSystem : MonoBehaviour
 
     }
 
+
     // Tells which checkpoint the vehicle passes thru
     public void Hit_Checkpoint(Checkpoint checkpoint, DriverController driver)
     {
@@ -61,24 +62,37 @@ public class CheckpointSystem : MonoBehaviour
 
         if (hit_index == next_index)
         {
-            Debug.Log($"[CORRECT] Hit checkpoint #{hit_index}");
-
-            _next_checkpoint[_drivers.IndexOf(driver)] = (next_index + 1) % _checkpoints.Count;
-
-            HitCheckpointEventArgs args = new HitCheckpointEventArgs(driver.transform);
-
-            Hit_Correct_Checkpoint?.Invoke(this, args);
+            Hit_Correct(driver, next_index, hit_index);
         }
 
         else
         {
-            Debug.Log($"[ERROR] Hit wrong checkpoint #{hit_index} (expected #{next_index})");
-
-            HitCheckpointEventArgs args = new HitCheckpointEventArgs(driver.transform);
-
-            Hit_Wrong_Checkpoint?.Invoke(this, args);
+            Hit_Wrong(driver, next_index, hit_index);
         }
     }
+
+
+    private void Hit_Wrong(DriverController driver, int next_index, int hit_index)
+    {
+        Debug.Log($"[ERROR] Hit wrong checkpoint #{hit_index} (expected #{next_index})");
+
+        HitCheckpointEventArgs args = new HitCheckpointEventArgs(driver.transform);
+
+        Hit_Wrong_Checkpoint?.Invoke(this, args);
+    }
+
+
+    private void Hit_Correct(DriverController driver, int next_index, int hit_index)
+    {
+        Debug.Log($"[CORRECT] Hit checkpoint #{hit_index}");
+
+        _next_checkpoint[_drivers.IndexOf(driver)] = (next_index + 1) % _checkpoints.Count;
+
+        HitCheckpointEventArgs args = new HitCheckpointEventArgs(driver.transform);
+
+        Hit_Correct_Checkpoint?.Invoke(this, args);
+    }
+
 
     // Reset the next checkpoint of the specified driver
     public void Reset_Checkpoints(DriverController driver)
@@ -93,6 +107,7 @@ public class CheckpointSystem : MonoBehaviour
     }
 
 }
+
 
 // Custom event args to pass to the ML-Agent
 public class HitCheckpointEventArgs : EventArgs

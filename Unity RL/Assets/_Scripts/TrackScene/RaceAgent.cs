@@ -13,9 +13,6 @@ public class RaceAgent : Agent
     [SerializeField]
     private CheckpointSystem _checkpoint_system;
     
-    // UI displays agent accuracy
-    private UI _ui;
-
     // Start position
     [SerializeField]
     private Vector3 _start_position;
@@ -27,7 +24,6 @@ public class RaceAgent : Agent
 
     private void Awake()
     {
-        _ui = FindObjectOfType<UI>();
         _start_position = transform.localPosition;
         _start_rotation = transform.localRotation;
         _driver = GetComponent<DriverController>();
@@ -43,6 +39,7 @@ public class RaceAgent : Agent
 
     private void Hit_Correct_Checkpoint(object sender, HitCheckpointEventArgs e)
     {
+
         if (e.driver_transform == transform)
         {
             Debug.Log("[REWARD] Driver hit correct checkpoint");
@@ -53,6 +50,7 @@ public class RaceAgent : Agent
 
     private void Hit_Wrong_Checkpoint(object sender, HitCheckpointEventArgs e)
     {
+
         if (e.driver_transform == transform)
         {
             Debug.Log("[PUNISH] Driver hit incorrect checkpoint");
@@ -158,12 +156,8 @@ public class RaceAgent : Agent
             EndEpisode();
         }
 
-        /*// If agent collides with coin, reward
-        if (other.TryGetComponent(out Checkpoint _))
-        {
-            _ui.total_wins++;
-        }*/
 
     }
-   
+
+
 }
