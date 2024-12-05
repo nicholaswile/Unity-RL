@@ -127,7 +127,6 @@ public class RaceAgent : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<int> discrete_actions = actionsOut.DiscreteActions;
-        ActionSegment<float> continuous_actions = actionsOut.ContinuousActions;
 
         // The Fire1 button in Unity is mapped to the left ctrl key, left mouse button, and the square button on my USB controller
         bool accelerate = Input.GetButton("Fire1"); 
@@ -158,7 +157,10 @@ public class RaceAgent : Agent
         {
             turn_input = 2;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce78669291fa75ee6c06b9fd72778aeac2f9e781
         discrete_actions[1] = turn_input;
     }
 
@@ -171,7 +173,7 @@ public class RaceAgent : Agent
         // If agent falls off the track, it collides with a trigger tagged 'wall', penalize
         if (other.TryGetComponent(out Wall _))
         {
-            AddReward(-10.0f);
+            AddReward(-1.0f);
             Debug.Log("[LOSE] Agent fell off the track!");
             EndEpisode();
         }

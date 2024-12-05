@@ -2892,11 +2892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _win_text: {fileID: 1119761824}
-  _velocity_text: {fileID: 1854781271}
-  _scale_factor: 6
   total_wins: 0
   total_losses: 0
-  velocity: 0
 --- !u!1 &1572105644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,8 +3046,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000
-  _coin_agent: {fileID: 1728476787}
-  _move_speed: 20
+  _checkpoint_system: {fileID: 338237355}
   _start_position: {x: 0, y: 0, z: 0}
 --- !u!114 &1572105656
 MonoBehaviour:
@@ -4531,7 +4527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1440196911384800351
 GameObject:
   m_ObjectHideFlags: 0
