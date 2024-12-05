@@ -149,10 +149,24 @@ Kennesaw State University Department of Computer Science.
 ### Unity ML-Agents Package
 Unity Technologies. (2023). *Unity Machine Learning Agents*.  https://github.com/Unity-Technologies/ml-agents
 
+
 Unity Manual ML-Agents Documentation. https://docs.unity3d.com/2021.3/Documentation/Manual/com.unity.ml-agents.html
 
-### Research Paper
-Juliani, A., Berges, V., Vckay, E., Gao, Y., Henry, H., Mattar, M., & Lange, D. (2018). *Unity: A General Platform for Intelligent Agents*. arXiv preprint arXiv:1809.02627.
+
+### Research
+J. Schulman, F. Wolski, P. Dhariwal, A. Radford, and O. Klimov, "Proximal Policy Optimization Algorithms," arXiv preprint arXiv:1707.06347, Jul. 2017. Available: https://arxiv.org/abs/1707.06347.
+
+A. Juliani et al., "Unity: A General Platform for Intelligent Agents," arXiv preprint arXiv:1809.02627, Sep. 2018. Available: https://arxiv.org/abs/1809.02627.
+
+J. Ho and S. Ermon, "Generative Adversarial Imitation Learning," arXiv preprint arXiv:1606.03476, Jun. 2016. Available: https://arxiv.org/abs/1606.03476.
+
+A. Kumar et al., "When Should We Prefer Offline Reinforcement Learning Over Behavioral Cloning?" arXiv preprint arXiv:2204.05618, Apr. 2022. Available: https://arxiv.org/abs/2204.05618.
+
+B. R. Kiran et al., "Deep Reinforcement Learning for Autonomous Driving: A Survey," in IEEE Transactions on Intelligent Transportation Systems, vol. 23, no. 6, pp. 4909-4926, June 2022, doi: 10.1109/TITS.2021.3054625. Available: https://ieeexplore.ieee.org/document/9351818
+
+### Setting up ML-Agents
+Code Monkey. (2020). Machine Learning AI in Unity (ML-Agents). [Playlist]. https://youtube.com/playlist?list=PLzDRvYVwl53vehwiN_odYJkPBzcqFw110&si=Tu09jWHK0A4V7LEl
+* A fantastic playlist by Code Monkey to help you get started with setting the software up, defining agent behaviors in C# scripts, and designing simulation environments.
 
 ## Assets
 All assets are original and created by me except for the F-Zero machines, which are all from The VG Resource, and the skybox, which is a cubemap I got from LearnOpenGL. My project is 100% free.
