@@ -1,5 +1,39 @@
 # Unity-RL
-A prototype demonstrating reinforcement learning for agent-based artificial intelligence with Unity ML-Agents. 
+A prototype demonstrating reinforcement learning (PPO) and imitation learning (GAIL, BC) focusing on NPC behavior in autonomous driving with Unity ML-Agents. 
+
+|RL-trained NPC drivers race each other over the sea!|
+|:--:|
+|<img src="screenshots/multiagent.gif">|
+
+## The agents
+|Vehicle|Perception sensors|
+|:--:|:--:|
+|![alt text](screenshots/vehicle.png)|![alt text](screenshots/sensor.png)|
+
+The vehicle game object has several C# scripts attached deriving from classes in the ML-Agents package. ML-Agent classes define the NPC behavior including observations from sensors, actions from actuators, and handling rewards events. My goal was to train the vehicles to stay on the track without falling off, thus my rewards involved following checkpoints in order on the track, as well as penalties for falling off or getting too close to the edge of the track.
+
+## Game design
+### Gameplay
+|Cam 1|Cam 2|
+|:--:|:--:|
+|![alt text](screenshots/pov.png)|![alt text](screenshots/vehicle-afar.png)|
+
+While the goal of this project is to train NPC agents to play the game itself, I have also implemented input processing to allow users to play the game as well. This is required for testing the simulation, as well as training with heuristics for imitation learning. 
+
+### Controls
+| Button | Action |
+|:--|:--|
+|Fire1 (LMB, square-button @ PS4)| Accelerate|
+|Fire2 (RMB, x-button @ PS4)| Brake|
+|Horizontal Axis (AD, Arrows, Analog Stick)| Steer|
+|Tab| Change camera view|
+
+### Track design
+|Unity view| Autodesk Maya view|
+|:--:|:--:|
+|![alt text](screenshots/track.png)|![alt text](screenshots/maya.png)|
+
+I designed the track in Autodesk Maya using spline tools. This is because I am using Unity 2021, thus I do not have access to the spline package that is compatible with Unity 2022 and newer. After converting the spline to a paint effect then to a polygon, I imported it into Unity and setup the simulation environment. I included triggers for checkpoints and barriers to indicate where the NPC would be rewarded and penalized for training.
 
 ## Requirements
 * Unity 2021.3 
@@ -75,7 +109,12 @@ If you get these warnings and do have an NVIDIA GPU and want to use CUDA, you ca
 ## Training
 The following is the command to train a new agent. If you want to create a different agent, you may change the name of the config file and ID to appropriately match the agent you want to make.
 ```bash
-$ mlagents-learn config/GetCoinAgent.yaml --run-id=get-coin
+$ mlagents-learn config/RaceAgent-Imitation.yaml --run-id=checkpoints
+```
+
+You may also resume from a previous run.
+```bash
+$ mlagents-learn config/RaceAgent-Imitation.yaml --run-id=checkpoints --resume
 ```
 
 |If setup correctly, the Unity logo displays in the terminal.|
@@ -96,7 +135,7 @@ CTRL+C to quit)
 ```
 |Rewards/Losses|Policy|
 |:---:|:---:|
-|<img src="screenshots/viz1.png">|<img src="screenshots/viz2.png">|
+|![alt text](screenshots/reward.png)|![alt text](screenshots/policy.png)|
 
 ## Imitation learning
 Generative Adversarial Imitation Learning (GAIL) can be used to speedup RL training. How it works is, I record a gameplay session so the agent can view how it is supposed to play (rather than randomly guessing via trial and error). GAIL creates a second learning algorithm (discriminator) to determine whether an action comes from the agent or my demo. The agent must learn to behave more like the demo to deceive the discriminator. Behavioral Cloning (BC) may also be added to force the agent to act like the demo. Adding these to a project involves editing the config file to support additional learning types and parameters.
